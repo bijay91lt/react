@@ -7,6 +7,7 @@ interface ModalProps{
     title?: string;
 }
 
+
 function Modal({ isOpen, onClose, children, title}: ModalProps){
     if(!isOpen) return null;
 
