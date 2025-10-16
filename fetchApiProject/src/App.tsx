@@ -99,11 +99,12 @@ function App() {
         const createdPost: Post = await res.json();
         setData([createdPost, ...data]);
         setNewPost({title: '', body: ''});
-        // setShowNewPostForm(false);
+        setIsModalOpen(false);
       }
     } catch(error){
       alert('Failed to update post:'+{error});
     }
+    // setShowNewPostForm(false);
   }
 
   if (loading) return <p>Loading...</p>;
