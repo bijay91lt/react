@@ -21,8 +21,8 @@ function SearchBar({ onSearch }: SearchBarProps) {
           type="search"
           placeholder="Keyword"
           className="inline w-full rounded-md border border-gray-300 bg-white py-2 pl-3 pr-3 ..."
-          value={query}               // 🔑 Must be {query}, NOT ""
-          onChange={handleChange}     // 🔑 Must update query
+          value={query}               
+          onChange={handleChange}     
         />
       </div>
     </div>
