@@ -32,60 +32,68 @@ function PostList({ posts, searchQuery, onDelete, onUpdate, onView }: PostListPr
   };
 
   return (
-    <ul className="mt-6 space-y-4">
+    <ul className="flex flex-col gap-3.5 w-full">
       {filteredPosts.length === 0 ? (
         <p>No posts found.</p>
       ) : (
         filteredPosts.map(post => (
-          <li key={post.id} className="border rounded p-4">
+          <li key={post.id} className="">
             {editingId === post.id ? (
-              <div>
-                <input
-                  value={editTitle}
-                  onChange={e => setEditTitle(e.target.value)}
-                  className="w-full p-2 border mb-2"
-                />
-                <textarea
-                  value={editBody}
-                  onChange={e => setEditBody(e.target.value)}
-                  className="w-full p-2 border mb-2"
-                  rows={3}
-                />
-                <div>
-                  <button
-                    onClick={() => saveEdit(post.id)}
-                    className="bg-green-600 text-white px-3 py-1 rounded mr-2"
-                  >
-                    Save
-                  </button>
-                  <button
-                    onClick={() => setEditingId(null)}
-                    className="bg-gray-500 text-white px-3 py-1 rounded"
-                  >
-                    Cancel
-                  </button>
-                </div>
+              <div className="space-y-4 w-full max-w-lg">
+              <input
+                value={editTitle}
+                onChange={(e) => setEditTitle(e.target.value)}
+                placeholder="Post title"
+                className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base font-medium text-gray-800 shadow-sm"
+              />
+              <textarea
+                value={editBody}
+                onChange={(e) => setEditBody(e.target.value)}
+                placeholder="Write your post content..."
+                rows={5}
+                className="w-full px-4 py-2.5 rounded-lg bg-white border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base text-gray-700 shadow-sm resize-none"
+              />
+              <div className="flex gap-3 pt-2">
+                <button
+                  onClick={() => saveEdit(post.id)}
+                  className="px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+                >
+                  Save
+                </button>
+                <button
+                  onClick={() => setEditingId(null)}
+                  className="px-5 py-2 bg-gray-200 text-gray-800 font-medium rounded-lg hover:bg-gray-300 shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
+                >
+                  Cancel
+                </button>
               </div>
+            </div>
             ) : (
               <div>
-                <h2 className="text-lg font-semibold">{post.title}</h2>
-                <p className="mt-1 text-gray-700">{post.body}</p>
-                <div className="mt-3 space-x-2">
+                <h2 className="text-m md:text-xl pl-2 my-2 border-l-4  font-sans font-bold border-blue-400  dark:text-gray-600">{post.title}</h2>
+                <p className="">{post.body}</p>
+                <div className="">
                   <button
                     onClick={() => onView(post.id)}
-                    className="text-blue-600 hover:underline text-sm"
+                    className="px-4 py-1 my-4 bg-gradient-to-r from-blue-500 to-purple-500 
+    text-white font-bold rounded-full transition-transform transform-gpu 
+    hover:-translate-y-1 hover:shadow-lg"
                   >
                     View
                   </button>
                   <button
                     onClick={() => startEditing(post)}
-                    className="text-green-600 hover:underline text-sm"
+                    className="px-4 py-1 my-4 bg-gradient-to-r from-blue-500 to-purple-500 
+    text-white font-bold rounded-full transition-transform transform-gpu 
+    hover:-translate-y-1 hover:shadow-lg"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => onDelete(post.id)}
-                    className="text-red-600 hover:underline text-sm"
+                    className="px-4 py-1 my-4 bg-gradient-to-r from-blue-500 to-purple-500 
+    text-white font-bold rounded-full transition-transform transform-gpu 
+    hover:-translate-y-1 hover:shadow-lg"
                   >
                     Delete
                   </button>
